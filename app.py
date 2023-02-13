@@ -18,6 +18,7 @@ def home():
     <h1> This is a home page </h1>
     <p> This is a paragraph </p>
     '''
+    print(TOKEN)
     return html
 
 # Create a route
