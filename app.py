@@ -22,21 +22,19 @@ def home():
     return html
 
 # Create a route
-@app.route('/api', methods=['POST'])
+@app.route('/api')
 def api():
     # Get the data from the POST request.
    
     data = request.get_json(force=True)
-    print(data)
     chat_id =telegram.Update.message.chat_id
 
     # Send a message to the bot
     bot.send_message(chat_id=chat_id, text=telegram.Update.message.text)
-    
+    print(data)
     return jsonify(data)
 
 
 # Run the app
 if __name__ == '__main__':
     app.run(debug=True)
-
