@@ -28,9 +28,10 @@ def api():
    
     data = request.get_json(force=True)
     print(data)
-    chat_id =5575549228
+    chat_id =telegram.Update.message.chat_id
+
     # Send a message to the bot
-    bot.send_message(chat_id=chat_id, text='Hello, this is a message from the bot')
+    bot.send_message(chat_id=chat_id, text=telegram.Update.message.text)
     
     return jsonify(data)
 
