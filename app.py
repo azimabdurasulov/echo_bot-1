@@ -23,6 +23,7 @@ def webhook():
     text = update.message.text
 
     # sendMessage
+    print(update)
     bot.send_message(chat_id, text)
 
     return 'ok'
