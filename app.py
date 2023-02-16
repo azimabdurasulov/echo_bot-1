@@ -22,7 +22,7 @@ def webhook():
         update: Update = Update.de_json(data, bot)
 
         # get chat_id, text from update
-        chat_id = update.message.chat_id
+        chat_id = update.message.chat.id
         text = update.message.text
 
         # sendMessage
