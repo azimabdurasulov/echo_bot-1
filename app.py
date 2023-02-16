@@ -10,20 +10,24 @@ app = Flask(__name__)
 TOKEN = os.environ['TOKEN']
 bot = Bot(TOKEN)
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/', methods=['POST', 'GET'])
 def webhook():
+    if request.method == 'GET':
+        return 'hi from Python-2022I'
     # get data from request
-    data = request.get_json(force=True)
+    elif request.method == 'POST':
+        data = request.get_json(force=True)
 
-    # update
-    update: Update = Update.de_json(data, bot)
+        # update
+        update: Update = Update.de_json(data, bot)
 
-    # get chat_id, text from update
-    chat_id = update.message.chat_id
-    text = update.message.text
+        # get chat_id, text from update
+        chat_id = update.message.chat_id
+        text = update.message.text
 
-    # sendMessage
-    print(update)
-    bot.send_message(chat_id, text)
+        # sendMessage
+        if text != None:
+            print(update)
+            bot.send_message(chat_id, text)
 
-    return 'ok'
+        return 'ok'
